@@ -35,7 +35,7 @@ class XMLWriter extends BaseXMLWriter
     {
         foreach ($resource->getAllLinks() as $rel => $links) {
             if (!is_array($links)) {
-                $links = [$links];
+                $links = array($links);
             }
 
             foreach ($links as $link) {
@@ -48,7 +48,7 @@ class XMLWriter extends BaseXMLWriter
     {
         foreach ($resource->getAllLinkedResources() as $rel => $resources) {
             if (!is_array($resources)) {
-                $resources = [$resources];
+                $resources = array(resources);
             }
 
             foreach ($resources as $resource) {
@@ -123,7 +123,7 @@ class XMLWriter extends BaseXMLWriter
     {
         foreach ($resource->getAllResources() as $rel => $resources) {
             if (!is_array($resources)) {
-                $resources = [$resources];
+                $resources = array(resources);
             }
 
             foreach ($resources as $resource) {

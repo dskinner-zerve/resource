@@ -14,10 +14,10 @@ class Resource
     protected $key;
     protected $relation;
     protected $uri;
-    protected $resources = [];
-    protected $linkedResources = [];
-    protected $links = [];
-    protected $data = [];
+    protected $resources = array();
+    protected $linkedResources = array();
+    protected $links = array();
+    protected $data = array();
     protected $lastUpdate;
     protected $cache;
     protected $writer;
@@ -101,7 +101,7 @@ class Resource
         foreach ($links as $link) {
             if (!$link instanceof Link) {
                 throw new InvalidArgumentException(
-                    'Invalid array, must be []Link'
+                    'Invalid array, must be instance of Link'
                 );
             }
         }
@@ -155,7 +155,7 @@ class Resource
         }
 
         if (!is_array($resources)) {
-            $resources = [$resources];
+            $resources = array($resources);
         }
 
         foreach ($resources as $resource) {
@@ -217,7 +217,7 @@ class Resource
         foreach ($resources as $resource) {
             if (!$resource instanceof Resource) {
                 throw new InvalidArgumentException(
-                    'Invalid array, must be []Resource'
+                    'Invalid array, must be instance of Resource'
                 );
             }
         }

@@ -49,10 +49,10 @@ class ResourceTest extends TestCase
 
     public function testSetLinks()
     {
-        $linksExpected = [
+        $linksExpected = array(
             $this->createLinkMock(),
             $this->createLinkMock()
-        ];
+        );
 
         $this->resource->setLinks('foo', $linksExpected);
 
@@ -65,10 +65,10 @@ class ResourceTest extends TestCase
      */
     public function testSetLinksInvalid()
     {
-        $linksExpected = [
+        $linksExpected = array(
             $this->createLinkMock(),
             'foo'
-        ];
+        );
 
         $this->resource->setLinks('foo', $linksExpected);
     }
@@ -105,10 +105,10 @@ class ResourceTest extends TestCase
         $linkedResourceB = new Resource($this->repository);
         $linkedResourceB->setURI('bar');
 
-        $this->resource->linkResources('foo', [
+        $this->resource->linkResources('foo', array(
             $linkedResourceA,
             $linkedResourceB
-        ]);
+        ));
 
         $links = $this->resource->getLinkedResources('foo');
         $this->assertSame([
@@ -126,9 +126,9 @@ class ResourceTest extends TestCase
     {
         $linkedResourceB = new Resource($this->repository);
 
-        $this->resource->linkResources('foo', [
+        $this->resource->linkResources('foo', array(
             $linkedResourceB
-        ]);
+        ));
     }
 
     public function testExpandLinkedResourcesOne()
@@ -157,16 +157,16 @@ class ResourceTest extends TestCase
         $linkedResourceB = new Resource($this->repository);
         $linkedResourceB->setURI('bar');
 
-        $this->resource->linkResources('foo', [
+        $this->resource->linkResources('foo', array(
             $linkedResourceA,
             $linkedResourceB
-        ]);
+        ));
 
         $this->assertCount(0, $this->resource->getAllResources());
 
         $this->resource->expandLinkedResources('foo');
         $this->assertSame(
-            [$linkedResourceA, $linkedResourceB],
+            array($linkedResourceA, $linkedResourceB],
             $this->resource->getResources('foo')
         );
     }
@@ -279,10 +279,10 @@ class ResourceTest extends TestCase
         $resourceA = new Resource($this->repository);
         $resourceB = new Resource($this->repository);
 
-        $this->resource->addResources('foo', [
+        $this->resource->addResources('foo', array(
             $resourceA,
             $resourceB
-        ]);
+        ));
 
         $resources = $this->resource->getAllResources();
         $this->assertSame([$resourceA, $resourceB], $resources['foo']);
@@ -296,11 +296,11 @@ class ResourceTest extends TestCase
         $resourceA = new Resource($this->repository);
         $resourceB = new Resource($this->repository);
 
-        $this->resource->addResources('foo', [
+        $this->resource->addResources('foo', array(
             $resourceA,
             'root'
-        ]);
-        
+        ));
+
         $resources = $this->resource->getAllResources();
         $this->assertSame([$resourceA, $resourceB], $resources['foo']);
     }

@@ -12,7 +12,7 @@ $resource->setLink('prev', new Link('/index?page=1'));
 $resource->setLink('next', new Link('/index?page=3'));
 $resource->addData('count', 5);
 
-$subresource = [];
+$subresource = array();
 foreach (range(1, 5) as $value) {
     $subresource = new Resource();
     $subresource->addData('value', $value);

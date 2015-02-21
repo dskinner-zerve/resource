@@ -52,7 +52,7 @@ class JsonWriter extends BaseJsonWriter
 
     protected function transformResources(&$array, Resource $resource)
     {
-        $embedded = [];
+        $embedded = array();
         foreach ($resource->getAllResources() as $rel => $resources) {
             if ($resources instanceof Resource) {
                 $this->doTransformSingleResource($array, $embedded, $rel, $resources);

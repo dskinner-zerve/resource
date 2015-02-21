@@ -18,31 +18,31 @@ abstract class XMLReader extends Reader
 
     abstract protected function arrayToResource(Array $array);
 
-    protected function xmlToArray(BasicXMLReader $xml){ 
-        $array = []; 
+    protected function xmlToArray(BasicXMLReader $xml){
+        $array = array();
 
-        $i = 0; 
-        while($xml->read()){ 
+        $i = 0;
+        while($xml->read()){
             if ($xml->nodeType == BasicXMLReader::END_ELEMENT) {
-                break; 
-            } 
+                break;
+            }
 
-            if ($xml->nodeType == BasicXMLReader::ELEMENT && !$xml->isEmptyElement) { 
-                $array[$i]['name'] = $xml->name; 
-                $array[$i]['values'] = $this->xmlToArray($xml); 
+            if ($xml->nodeType == BasicXMLReader::ELEMENT && !$xml->isEmptyElement) {
+                $array[$i]['name'] = $xml->name;
+                $array[$i]['values'] = $this->xmlToArray($xml);
                 $array[$i]['attributes'] = $this->getAttributesFromNode($xml);
-                $i++; 
-            } else if ($xml->isEmptyElement) { 
-                $array[$i]['name'] = $xml->name; 
-                $array[$i]['values'] = null; 
+                $i++;
+            } else if ($xml->isEmptyElement) {
+                $array[$i]['name'] = $xml->name;
+                $array[$i]['values'] = null;
                 $array[$i]['attributes'] = $this->getAttributesFromNode($xml);
                 $i++;
             } else if($xml->nodeType == BasicXMLReader::TEXT) {
-                $array = $xml->value; 
+                $array = $xml->value;
             }
         }
 
-        return $array; 
+        return $array;
     }
 
     private function getAttributesFromNode(BasicXMLReader $xml)
@@ -51,11 +51,11 @@ abstract class XMLReader extends Reader
             return null;
         }
 
-        $attributes = [];
+        $attributes = array();
         while($xml->moveToNextAttribute()) {
-            $attributes[$xml->name] = $xml->value; 
+            $attributes[$xml->name] = $xml->value;
         }
-        
+
         return $attributes;
     }
 

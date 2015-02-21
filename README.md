@@ -1,35 +1,35 @@
 Level3 Resource [![Build Status](https://travis-ci.org/level3php/resource.png?branch=master)](https://travis-ci.org/level3php/resource)
 ==============================
 
-Level3 Resource is a library for representing and consuming resources in different [hypermedia](http://en.wikipedia.org/wiki/Hypermedia) 
-formats. 
+Level3 Resource is a library for representing and consuming resources in different [hypermedia](http://en.wikipedia.org/wiki/Hypermedia)
+formats.
 
-A resource in a [HATEOAS API] (http://en.wikipedia.org/wiki/HATEOAS) must describe its own capabilities 
+A resource in a [HATEOAS API] (http://en.wikipedia.org/wiki/HATEOAS) must describe its own capabilities
 and interconnections, which is the third level of [Three Levels of the REST Maturity Model](http://www.infoq.com/news/2010/03/RESTLevels)
 
 ### Why Hypermedia?
 
 As you can read in the prologue of [Designing Hypermedia APIs](http://www.designinghypermediaapis.com/) book:
 
->Hypermedia APIs embrace the principles that make the web great: flexibility, standardization, and loose coupling 
-to any given service. They take into account the principles of systems design [enumerated by Roy Fielding in his thesis](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm), 
+>Hypermedia APIs embrace the principles that make the web great: flexibility, standardization, and loose coupling
+to any given service. They take into account the principles of systems design [enumerated by Roy Fielding in his thesis](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm),
 but with a little less sytems theory jargon.
 
->Hypermedia designs scale better, are more easily changed and promote decoupling and encapsulation, with all the 
-benefits those things bring. On the downside, it is not necessarily the most latency-tolerant design, and caches 
+>Hypermedia designs scale better, are more easily changed and promote decoupling and encapsulation, with all the
+benefits those things bring. On the downside, it is not necessarily the most latency-tolerant design, and caches
 can get stale if you're not careful. It may not be as efficient on an individual request level as other designs.
 
 >-- [Steve Klabnik](http://www.steveklabnik.com/)
 
 ### Which Hypermedia specification should I use?
 
-Hypermedia is being defined these days. Only the best APIs implement Hypermedia. Currently there is no de 
+Hypermedia is being defined these days. Only the best APIs implement Hypermedia. Currently there is no de
 facto standard, so you must choose between the differents specifications.
 
 Level3 Resource currenly implements or is planned to implement these specifications:
 * [HAL](http://stateless.co/hal_specification.html): This is the most common and active. It has a JSON and a XML version.
 * [Siren](https://github.com/kevinswiber/siren): Currently being defined. It implements some useful things like actions, classes, etc.
-* [Collection+JSON](http://amundsen.com/media-types/collection/): This is fully designed to be a CRUD oriented API. 
+* [Collection+JSON](http://amundsen.com/media-types/collection/): This is fully designed to be a CRUD oriented API.
 
 
 Requirements
@@ -106,7 +106,7 @@ $resource->setLink('prev', new Link('/index?page=1'));
 $resource->setLink('next', new Link('/index?page=3'));
 $resource->addData('count', 5);
 
-$subresource = [];
+$subresource = array();
 foreach (range(1, 5) as $value) {
     $subresource = new Resource();
     $subresource->addData('value', $value);
