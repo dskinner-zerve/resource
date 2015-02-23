@@ -12,7 +12,7 @@ class JsonWriter extends BaseJsonWriter
 
     protected function resourceToArray(Resource $resource)
     {
-        $data = [];
+        $data = array();
 
         $this->transformDataAndMetadata($data, $resource);
         $this->transformResources($data, $resource);
@@ -39,22 +39,22 @@ class JsonWriter extends BaseJsonWriter
     protected function transformLinks(&$array, Resource $resource)
     {
         if ($self = $resource->getSelfLink()) {
-            $array['links'][] = [
+            $array['links'][] = array(
                 'rel' => 'self',
                 'href' => $self->getHref()
-            ];
+            );
         }
 
         foreach ($resource->getAllLinks() as $rel => $links) {
             if (!is_array($links)) {
-                $links = [$links];
+                $links = array($links);
             }
 
             foreach ($links as $link) {
-                $array['links'][] = [
+                $array['links'][] = array(
                     'rel' => $rel,
                     'href' => $link->getHref()
-                ];
+                );
             }
         }
     }
@@ -65,7 +65,7 @@ class JsonWriter extends BaseJsonWriter
 
         foreach ($resource->getAllLinkedResources() as $rel => $linkedResources) {
             if (!is_array($linkedResources)) {
-                $linkedResources = [$linkedResources];
+                $linkedResources = array($linkedResources);
             }
 
             foreach ($linkedResources as $linked) {
@@ -74,17 +74,17 @@ class JsonWriter extends BaseJsonWriter
                     continue;
                 }
 
-                $array['entities'][] = [
+                $array['entities'][] = array(
                     'rel' => $rel,
                     'href' => $link
-                ];
+                );
             }
         }
     }
 
     private function getHrefsFromEntities($array)
     {
-        $embeddedLinks = [];
+        $embeddedLinks = array();
         if (isset($array['entities'])) {
             foreach ($array['entities'] as $entity) {
                 if (isset($entity['href'])) {
@@ -100,7 +100,7 @@ class JsonWriter extends BaseJsonWriter
     {
         foreach ($resource->getAllResources() as $rel => $resources) {
             if (!is_array($resources)) {
-                $resources = [$resources];
+                $resources = array($resources);
             }
 
             foreach ($resources as $resource) {
@@ -113,10 +113,10 @@ class JsonWriter extends BaseJsonWriter
     {
         $data = $this->resourceToArray($resource);
         if (!$data['class']) {
-            $data['class'] = array_merge($array['class'], [$rel]);
+            $data['class'] = array_merge($array['class'], array($rel));
         }
 
-        $metadata = [];
+        $metadata = array();
         $metadata['rel'] = $rel;
 
         if ($resource->getUri()) {

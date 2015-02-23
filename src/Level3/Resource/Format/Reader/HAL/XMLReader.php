@@ -64,7 +64,7 @@ class XMLReader extends BaseXMLReader
 
         if (isset($attributes[self::LINK_KEY_TITLE])) {
             $link->setTitle($attributes[self::LINK_KEY_TITLE]);
-        }      
+        }
 
         return $link;
     }
@@ -78,11 +78,11 @@ class XMLReader extends BaseXMLReader
 
         if (isset($array['attributes'][self::LINK_KEY_TITLE])) {
             $resource->setTitle($array['attributes'][self::LINK_KEY_TITLE]);
-        }   
+        }
 
-        $embeddeds = [];
-        $links = [];
-        $data = [];
+        $embeddeds = array();
+        $links = array();
+        $data = array();
 
         foreach ($array['values'] as $node) {
             if ($this->nodeIsResource($node)) {
@@ -92,7 +92,7 @@ class XMLReader extends BaseXMLReader
             } else {
 
                 if (is_array($node['values'])) {
-                    $toSave = [];
+                    $toSave = array();
                     foreach ($node['values'] as $value) {
                         $toSave[$value['name']][] = $value['values'];
                     }

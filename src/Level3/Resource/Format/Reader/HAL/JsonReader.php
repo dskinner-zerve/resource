@@ -62,12 +62,12 @@ class JsonReader extends BaseJsonReader
 
         if (isset($array[self::LINK_KEY_TITLE])) {
             $resource->setTitle($array[self::LINK_KEY_TITLE]);
-        }      
+        }
     }
 
     protected function doTransformLinks(Array $array)
     {
-        $links = [];
+        $links = array();
         foreach ($array as $link) {
             $links[] = $this->doTransformLink($link);
         }
@@ -96,7 +96,7 @@ class JsonReader extends BaseJsonReader
 
         if (isset($array[self::LINK_KEY_TITLE])) {
             $link->setTitle($array[self::LINK_KEY_TITLE]);
-        }      
+        }
 
         return $link;
     }
@@ -116,7 +116,7 @@ class JsonReader extends BaseJsonReader
 
     protected function doTransformEmbeddeds(Array $array)
     {
-        $embeddeds = [];
+        $embeddeds = array();
         foreach ($array as $embedded) {
             $embeddeds[] = $this->doTransformEmbedded($embedded);
         }

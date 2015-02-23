@@ -17,16 +17,16 @@ abstract class WriterTest extends TestCase
             'value' => 'bar',
             'bar' => 1,
             'foo' => true,
-            'array' => [
+            'array' => array(
                 'bar' => 'foo'
-            ],
-            'arrayOfarrays' => [
-                ['bar' => 'foo'],
-                ['foo' => 'bar']
-            ],
-            'arrayOfstrings' => [
+            ),
+            'arrayOfarrays' => array(
+                array('bar' => 'foo'),
+                array('foo' => 'bar')
+            ),
+            'arrayOfstrings' => array(
                 'foo', 'bar'
-            ]
+            )
         ]);
 
         $link = new Link('foo');
@@ -37,10 +37,10 @@ abstract class WriterTest extends TestCase
 
         $resource->setLink('quz', $link);
 
-        $resource->setLinks('foo', [
+        $resource->setLinks('foo', array(
             $link,
             new Link('qux')
-        ]);
+        ));
 
         $subResource = $this->createResource(self::EXAMPLE_URI)->setData(['value' => 'qux']);
         $subResource->addResource(
@@ -53,20 +53,20 @@ abstract class WriterTest extends TestCase
             $this->createResource()->setData(['foo' => 'qux'])
         );
 
-        $resource->addResources('baz', [
+        $resource->addResources('baz', array(
             $subResource,
             $this->createResource()->setData(['baz' => 'foo'])
-        ]);
+        ));
 
         $subResource->linkResource(
             'qux',
             $this->createResource(self::EXAMPLE_URI)->setData([])->setTitle('qux')
         );
 
-        $subResource->linkResources('foo', [
+        $subResource->linkResources('foo', array(
             $this->createResource(self::EXAMPLE_URI)->setData([]),
             $this->createResource(self::EXAMPLE_URI)->setData([])
-        ]);
+        ));
 
         $formatter = new $this->class(true);
         $this->assertSame(

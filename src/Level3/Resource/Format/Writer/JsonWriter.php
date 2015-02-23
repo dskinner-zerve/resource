@@ -10,9 +10,9 @@ abstract class JsonWriter extends Writer
 {
     public function execute(Resource $resource)
     {
-        $options = [
+        $options = array(
             'unescaped_slashes' => true
-        ];
+        );
 
         if ($this->pretty) {
             $options['pretty_print'] = true;
