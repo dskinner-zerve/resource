@@ -1,5 +1,5 @@
 {
-    "name": "dskinner-zerve/resource",
+    "name": "zerve-level3/resource",
     "homepage": "http://github.com/dskinner-zerve/resource",
     "description": "Level3 Resource is a library for representing resources and consuming in different hypermedia formats.",
     "type": "library",
