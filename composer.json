@@ -1,6 +1,6 @@
 {
-    "name": "level3/resource",
-    "homepage": "http://github.com/level3php/resource",
+    "name": "dskinner-zerve/resource",
+    "homepage": "http://github.com/dskinner-zerve/resource",
     "description": "Level3 Resource is a library for representing resources and consuming in different hypermedia formats.",
     "type": "library",
     "keywords": [
@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.3.0",
         "hampel/json": "1.0.*"
     },
     "require-dev": {
