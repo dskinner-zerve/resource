@@ -1,6 +1,6 @@
 {
     "name": "level3/resource",
-    "homepage": "http://github.com/level3php/resource",
+    "homepage": "http://github.com/zerve/resource",
     "description": "Level3 Resource is a library for representing resources and consuming in different hypermedia formats.",
     "type": "library",
     "keywords": [
